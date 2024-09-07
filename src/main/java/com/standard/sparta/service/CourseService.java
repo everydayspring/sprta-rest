@@ -38,11 +38,12 @@ public class CourseService {
         Course savedCourse = courseRepository.save(newCourse);
 
         // 응답 반환
-        return new CourseCreateResponseDto(
-                savedCourse.getId(),
-                "created",
-                201
-        );
+        return new CourseCreateResponseDto(savedCourse.getId());
+//        return new CourseCreateResponseDto(
+//                savedCourse.getId(),
+//                "created",
+//                201
+//        );
     }
 
     /**
@@ -63,10 +64,11 @@ public class CourseService {
         )).toList();
 
         // 응답 반환
-        return new CourseListResponseDto(
-                "success",
-                200,
-                courseDtoList
-        );
+        return new CourseListResponseDto(courseDtoList);
+//        return new CourseListResponseDto(
+//                "success",
+//                200,
+//                courseDtoList
+//        );
     }
 }

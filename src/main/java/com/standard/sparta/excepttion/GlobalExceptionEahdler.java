@@ -1,5 +1,6 @@
 package com.standard.sparta.excepttion;
 
+import com.standard.sparta.dto.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,8 +15,9 @@ public class GlobalExceptionEahdler {
     }
 
     @ExceptionHandler(DuplicateCourseNameException.class)
-    public ResponseEntity<String> handleCourseNameExcpetion(DuplicateCourseNameException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    public ApiResponse<?> handleCourseNameExcpetion(DuplicateCourseNameException e) {
+//        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        return ApiResponse.createError(e.getMessage(), HttpStatus.BAD_REQUEST.value());
     }
 
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 public class CourseListResponseDto {
-    private String message;
-    private Integer statusCode;
+//    private String message;
+//    private Integer statusCode;
     List<CourseDto> courseDtoList;
 }

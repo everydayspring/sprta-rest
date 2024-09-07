@@ -7,6 +7,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public class CourseCreateResponseDto {
     private Long courseId;
-    private String message;
-    private Integer statusCode;
+//    private String message;
+//    private Integer statusCode;
 }
