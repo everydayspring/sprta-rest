@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface CourseRepository extends JpaRepository<Course, Long> {
+    boolean existsByNameAndIsDeleted(String name, boolean isDeleted);
 }

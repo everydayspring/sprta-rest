@@ -5,7 +5,9 @@ import com.standard.sparta.dto.course.CourseCreateRequestDto;
 import com.standard.sparta.dto.course.CourseCreateResponseDto;
 import com.standard.sparta.dto.course.CourseDto;
 import com.standard.sparta.dto.course.CourseListResponseDto;
+import com.standard.sparta.excepttion.DuplicateCourseNameException;
 import com.standard.sparta.repository.CourseRepository;
+import com.sun.jdi.request.DuplicateRequestException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,11 @@ public class CourseService {
      * 수업 생성 서비스
      */
     public CourseCreateResponseDto createCourse(CourseCreateRequestDto data) {
+
+        boolean flag = courseRepository.existsByNameAndIsDeleted(data.getName(), false);
+        if (flag) {
+            throw new DuplicateCourseNameException();
+        }
 
         // 생성: 수업(course) 엔티티
         Course newCourse = Course.createNewCourse(data.getName());
